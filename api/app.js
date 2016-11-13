@@ -1,11 +1,11 @@
 var express = require('express');
 var fetch = require('node-fetch');
-var key = 
+var key = require('./key');
 var app = express();
 
-var apiKey = "#";
 
-var url = "https://www.quandl.com/api/v3/datasets/GOOG/NYSE_BND.json?rows=1"
+
+var url = "https://www.quandl.com/api/v3/datasets/GOOG/NYSE_BND.json?rows=1?api_key=" + key.key
 
 
 
@@ -13,7 +13,7 @@ var url = "https://www.quandl.com/api/v3/datasets/GOOG/NYSE_BND.json?rows=1"
 //Get the last end of day price for VTI
 //Get the last end of day price for VXUS
 //Get the last end of day price for BND
-
+var url = "https://www.quandl.com/api/v3/datasets/GOOG/NYSE_BND.json?rows=1?api_key=" + key.key
 
 
 app.get('/', function (req, res) {
