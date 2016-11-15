@@ -3,6 +3,12 @@ var fetch = require('node-fetch');
 var key = require('./key');
 var app = express();
 
+app.use(express.static(__dirname + '/client'));
+//Store all HTML files in view folder.
+app.use(express.static(__dirname + '/client'));
+//Store all JS and CSS in Scripts folder.
+
+
 //Get the last end of day price for VTI
 var urlVTI = "https://www.quandl.com/api/v3/datasets/GOOG/NYSE_VTI.json?rows=1?api_key=" + key.key
 //Get the last end of day price for VXUS
@@ -17,7 +23,7 @@ function getQuote(url) {
     });
 }
 
-app.get('/', function (req, res) {
+app.get('/api', function (req, res) {
 		
 	var vti, vxus, bnd;
 	
@@ -33,6 +39,10 @@ app.get('/', function (req, res) {
 	})
 })
 
+
+app.get('/', function(req, res){ 
+    res.sendFile("index.html");
+})
 
 app.listen(3000, function () {
   console.log('app listening on port 3000!')
