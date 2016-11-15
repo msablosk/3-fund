@@ -3,13 +3,13 @@
 
 	<form>
 		<p>VTI</p>
-		<input type="range" name="" ng-model="percentVti">
+		<input type="range" ng-change="checkBalance(percentVti)" ng-model="percentVti">
 		<p>{{percentVti}}%</p>
 		<p>VXUS</p>
-		<input type="range" name="" ng-model="percentVxus">
+		<input type="range" ng-change="checkBalance(percentVxus)" ng-model="percentVxus">
 		<p>{{percentVxus}}%</p>
 		<p>BND</p>
-		<input type="range" name="" ng-model="percentBnd">
+		<input type="range" ng-change="checkBalance(percentBnd)" ng-model="percentBnd">
 		<p>{{percentBnd}}%</p>
 	</form>
 	<a href="#/"><button class="btn btn-primary"> <- Back</button></a>

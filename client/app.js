@@ -24,7 +24,16 @@ angular.module("app", ['ngRoute'])
 
     if (total > 100) {
       var equalReduction = (total - 100) / 2;
-      
+      if ($scope.percentVti = safe) {
+        $scope.percentVxus -= equalReduction;
+        $scope.percentBnd -= equalReduction; 
+      } else if ($scope.percentVxus = safe) {
+        $scope.percentVti -= equalReduction; 
+        $scope.percentBnd -= equalReduction;
+      } else {
+        $scope.percentVti -= equalReduction; 
+        $scope.percentVxus -= equalReduction;
+      }
     }
   }
 
