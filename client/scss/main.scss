@@ -1,33 +1,13 @@
-$sans-serif-font: 'Lato', Calibri, Arial, sans-serif;
-
-body {
-	background: #0ac2d2;
-}
-
 /******
 GENERAL
 ******/
 
-.container {
-	margin-top: 3rem;
-	padding: 4.5rem 0;
-}
-
-.logo {
-	font-family: $sans-serif-font;
+h1.logo {
 	color: white;
+	background: #26a69a;
+	margin-top:0;
 	text-align: center;
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: 6px;
-    word-spacing: 1rem;
-}
-
-.button-link {
-	background: white;
-	color: darkgray;
-	padding: 1rem 3rem;
-	margin: 1rem;
+	padding: 1rem 0;
 }
 
 /******
@@ -35,28 +15,38 @@ STEP 1
 ******/
 
 
-.step-1 {
+.step {
 	text-align:center;
-	
-	form {
-		.input-field {
-			margin: 0 auto;
-			text-align: right;
-			padding:2rem 2rem;
-			box-shadow: 0 3px 0 rgba(0,0,0,0.1);
-		}	
-	}	
 
-	.input-symbol-euro {
+	.input-field {
+		text-align: center;
+		font-size: 2rem;
+	}
+
+	.input-symbol-dollar {
 	 	position: relative;
 	}
 
-	.input-symbol-euro:after {
+	.input-symbol-dollar:after {
 	 	position: absolute;
-	 	top: 0;
+	 	font-size: 2rem;
+	 	top: -1rem;
 	 	content: "$";
 	 	left: 1rem;
 	}
+}
+
+
+/******
+STEP 2
+******/
+
+
+.percent-input {
+	padding: .5rem;
+	border-radius: 5px;
+	max-width: 5rem;
+	margin-bottom: 1rem;
 }
 
 

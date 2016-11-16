@@ -9,24 +9,28 @@ angular.module("app", ['ngRoute'])
       templateUrl: '/partials/two.html',
       controller:'mainCtrl'
     })
+    .when('/three', {
+      templateUrl: '/partials/three.html',
+      controller:'mainCtrl'
+    })
     .otherwise('/one');
   }
 ])
 .controller("mainCtrl", function($scope, $http){
 	$scope.funds;
   $scope.principal = 1000;
-  $scope.percentVti = 60;
+  $scope.percentVti = 50;
   $scope.percentVxus = 20;
   $scope.percentBnd = 30;
 
 
   // function for making sure allotments cannot total greater than 100%
   $scope.checkPercentTotalAndRebalance = function(safe) {
-    var total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1,
-        difference = total - 100;
-    
+    var total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1;
+        
+    // rebalance down when the total percentage is too high
     if (total > 100) {
-      
+      var difference = total - 100;
       if ($scope.percentVti == safe) {
         while (difference > 0) {
           if ($scope.percentVxus > 0) {
@@ -72,11 +76,10 @@ angular.module("app", ['ngRoute'])
         total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1;
       }
     }
-
   }
 
 
-  /*
+/*
 	$http({
   		method: 'GET',
   		url: 'http://localhost:3000/api'
@@ -85,6 +88,6 @@ angular.module("app", ['ngRoute'])
   	}, function errorCallback(response) {
     	console.log(response.data)
   	});
-  */
-	
+  
+	*/
 })
