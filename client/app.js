@@ -20,21 +20,33 @@ angular.module("app", ['ngRoute'])
   $scope.percentBnd = 30;
 
   $scope.checkBalance = function(safe) {
-    var total = $scope.percentVti + $scope.percentVxus + $scope.percentBnd;
-
+    var total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1;
+    
+    
     if (total > 100) {
       var equalReduction = (total - 100) / 2;
-      if ($scope.percentVti = safe) {
-        $scope.percentVxus -= equalReduction;
-        $scope.percentBnd -= equalReduction; 
-      } else if ($scope.percentVxus = safe) {
-        $scope.percentVti -= equalReduction; 
-        $scope.percentBnd -= equalReduction;
+      if ($scope.percentVti == safe) {
+        console.log(equalReduction)
+        $scope.percentVxus = equalReduction - equalReduction;
+        $scope.percentBnd = equalReduction - equalReduction;
+        total = 0; 
+        
+        console.log(equalReduction);
+      } else if ($scope.percentVxus == safe) {
+        console.log(equalReduction)
+        $scope.percentVti = equalReduction - equalReduction; 
+        $scope.percentBnd = equalReduction - equalReduction;
+        total = 0;
+        console.log(equalReduction);
       } else {
-        $scope.percentVti -= equalReduction; 
-        $scope.percentVxus -= equalReduction;
+        console.log(equalReduction)
+        $scope.percentVti = equalReduction - equalReduction; 
+        $scope.percentVxus = equalReduction - equalReduction;
+        total = 0;
+        console.log(equalReduction);
       }
     }
+
   }
 
 
