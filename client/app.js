@@ -1,15 +1,15 @@
 angular.module("app", ['ngRoute'])
 .config(['$locationProvider', '$routeProvider', function config($locationProvider, $routeProvider){
   $routeProvider.
-    when('/', {
-      templateUrl: '/partials/step1.html',
+    when('/one', {
+      templateUrl: '/partials/one.html',
       controller:'mainCtrl'
     })
-    .when('/step2', {
-      templateUrl: '/partials/step2.html',
+    .when('/two', {
+      templateUrl: '/partials/two.html',
       controller:'mainCtrl'
     })
-    .otherwise('/');
+    .otherwise('/one');
   }
 ])
 .controller("mainCtrl", function($scope, $http){
@@ -19,31 +19,57 @@ angular.module("app", ['ngRoute'])
   $scope.percentVxus = 20;
   $scope.percentBnd = 30;
 
-  $scope.checkBalance = function(safe) {
-    var total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1;
-    
+
+  // function for making sure allotments cannot total greater than 100%
+  $scope.checkPercentTotalAndRebalance = function(safe) {
+    var total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1,
+        difference = total - 100;
     
     if (total > 100) {
-      var equalReduction = (total - 100) / 2;
+      
       if ($scope.percentVti == safe) {
-        console.log(equalReduction)
-        $scope.percentVxus = equalReduction - equalReduction;
-        $scope.percentBnd = equalReduction - equalReduction;
-        total = 0; 
+        while (difference > 0) {
+          if ($scope.percentVxus > 0) {
+            $scope.percentVxus -= 1;
+            difference -= 1;
+          }
+          if ($scope.percentBnd > 0){
+            $scope.percentBnd -= 1;
+            difference -= 1;
+          }
+        }
         
-        console.log(equalReduction);
+        total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1; 
+
       } else if ($scope.percentVxus == safe) {
-        console.log(equalReduction)
-        $scope.percentVti = equalReduction - equalReduction; 
-        $scope.percentBnd = equalReduction - equalReduction;
-        total = 0;
-        console.log(equalReduction);
-      } else {
-        console.log(equalReduction)
-        $scope.percentVti = equalReduction - equalReduction; 
-        $scope.percentVxus = equalReduction - equalReduction;
-        total = 0;
-        console.log(equalReduction);
+        
+        while (difference > 0) {
+          if ($scope.percentVti > 0) {
+            $scope.percentVti -= 1;
+            difference -= 1;
+          }
+          if ($scope.percentBnd > 0){
+            $scope.percentBnd -= 1;
+            difference -= 1;
+          }
+        }
+
+        total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1;
+
+      } else if ($scope.percentBnd == safe) {
+        
+        while (difference > 0) {
+          if ($scope.percentVti > 0) {
+            $scope.percentVti -= 1;
+            difference -= 1;
+          }
+          if ($scope.percentVxus > 0){
+            $scope.percentVxus -= 1;
+            difference -= 1;
+          }
+        }
+
+        total = $scope.percentVti*1 + $scope.percentVxus*1 + $scope.percentBnd*1;
       }
     }
 
