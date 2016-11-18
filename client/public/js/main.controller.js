@@ -1,28 +1,19 @@
-angular.module("app", ['ngRoute'])
-.config(['$locationProvider', '$routeProvider', function config($locationProvider, $routeProvider){
-  $routeProvider.
-    when('/one', {
-      templateUrl: '/partials/one.html',
-      controller:'mainCtrl'
-    })
-    .when('/two', {
-      templateUrl: '/partials/two.html',
-      controller:'mainCtrl'
-    })
-    .when('/three', {
-      templateUrl: '/partials/three.html',
-      controller:'mainCtrl'
-    })
-    .otherwise('/one');
-  }
-])
-.controller("mainCtrl", function($scope, $http){
-	$scope.funds;
-  $scope.principal = 1000;
-  $scope.percentVti = 50;
-  $scope.percentVxus = 20;
-  $scope.percentBnd = 30;
+angular.module("app")
+.controller("mainCtrl", function($scope, Main, Api){
+  // $scope variables
+  $scope.principal = Main.principal;
+  $scope.percentVti = Main.percentVti;
+  $scope.percentVxus = Main.percentVxus;
+  $scope.percentBnd = Main.percentBnd;
+  $scope.funds;
+  Api.success(function(respsonse){
+    $scope.funds = respsonse.data;
+  })
 
+
+  // $scope functions
+  $scope.setPercents = Main.setPercents;
+  $scope.setPrincipal = Main.setPrincipal;
 
   // function for making sure allotments cannot total greater than 100%
   $scope.checkPercentTotalAndRebalance = function(safe) {
@@ -77,17 +68,4 @@ angular.module("app", ['ngRoute'])
       }
     }
   }
-
-
-/*
-	$http({
-  		method: 'GET',
-  		url: 'http://localhost:3000/api'
-	}).then(function successCallback(response) {
-    	$scope.funds = response.data
-  	}, function errorCallback(response) {
-    	console.log(response.data)
-  	});
-  
-	*/
 })

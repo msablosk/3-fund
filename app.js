@@ -36,9 +36,10 @@ app.get('/api', function (req, res) {
     			res.json({"vti": vti, "vxus": vxus, "bnd": bnd})
     		})
     	})
-	})
+	}, function(response){
+        console.log(response.data);
+    })
 })
-
 
 app.get('/', function(req, res){ 
     res.sendFile("index.html");
