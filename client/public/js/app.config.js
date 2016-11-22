@@ -1,17 +1,17 @@
-angular.module("app", ['ngRoute'])
+angular.module("app", ['ngRoute', 'ngAnimate'])
 .config(['$locationProvider', '$routeProvider', function config($locationProvider, $routeProvider){
   $routeProvider.
     when('/one', {
       templateUrl: '/partials/one.html',
-      controller:'mainCtrl'
+      controller:'oneCtrl'
     })
     .when('/two', {
       templateUrl: '/partials/two.html',
-      controller:'mainCtrl'
+      controller:'twoCtrl'
     })
     .when('/three', {
       templateUrl: '/partials/three.html',
-      controller:'mainCtrl'
+      controller:'threeCtrl'
     })
     .otherwise('/one');
   }

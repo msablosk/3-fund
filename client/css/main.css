@@ -1,12 +1,21 @@
 /******
 GENERAL
 ******/
-h1.logo {
-  color: white;
-  background: #26a69a;
-  margin-top: 0;
-  text-align: center;
-  padding: 1rem 0; }
+
+html { 
+  overflow-y:hidden; 
+}
+
+.page { 
+  bottom:0; 
+  position:absolute; 
+  text-align:center;
+  top:0;  
+  width:100%; 
+}
+
+
+
 
 /******
 STEP 1
@@ -33,3 +42,86 @@ STEP 2
   border-radius: 5px;
   max-width: 5rem;
   margin-bottom: 1rem; }
+
+
+/*
+Animations
+*/
+.page.ng-leave  { z-index:9999; }
+.page.ng-enter  { z-index:8888; }
+
+h1.logo {
+  color: white;
+  margin-top: 0;
+  text-align: center;
+  padding: 1rem 0; }
+
+.page-one.ng-leave        {
+  -webkit-animation:slideOutLeft 0.5s both ease-in;
+  -moz-animation:slideOutLeft 0.5s both ease-in;
+  animation:slideOutLeft 0.5s both ease-in;   
+}
+.page-one.ng-enter    {  
+  -webkit-animation:slideInRight 0.5s both ease-in;
+  -moz-animation:slideInRight 0.5s both ease-in;
+  animation:slideInRight 0.5s both ease-in;    
+}
+
+.page-one h1.logo{
+  background: #26a69a;
+}
+
+.page-two.ng-leave        {
+  -webkit-animation:slideOutLeft 0.5s both ease-in;
+  -moz-animation:slideOutLeft 0.5s both ease-in;
+  animation:slideOutLeft 0.5s both ease-in;   
+}
+.page-two.ng-enter    {  
+  -webkit-animation:slideInRight 0.5s both ease-in;
+  -moz-animation:slideInRight 0.5s both ease-in;
+  animation:slideInRight 0.5s both ease-in;    
+}
+
+.page-two h1.logo{
+  background: #B5E2FA;
+}
+
+.page-three.ng-leave        {
+  -webkit-animation:slideOutLeft 0.5s both ease-in;
+  -moz-animation:slideOutLeft 0.5s both ease-in;
+  animation:slideOutLeft 0.5s both ease-in;   
+}
+.page-three.ng-enter    {  
+  -webkit-animation:slideInRight 0.5s both ease-in;
+  -moz-animation:slideInRight 0.5s both ease-in;
+  animation:slideInRight 0.5s both ease-in;    
+}
+
+.page-three h1.logo{
+  background: #EDDEA4;
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+  from  { transform:translateX(100%); }
+  to    { transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+  from  { -moz-transform:translateX(100%); }
+  to    { -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+  from  { -webkit-transform:translateX(100%); }
+  to    { -webkit-transform: translateX(0); }
+}
+
+/* slide in from the right */
+@keyframes slideOutLeft {
+  to    { transform: translateX(-100%); }
+}
+@-moz-keyframes slideOutLeft {  
+  to    { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes slideOutLeft {
+  to    { -webkit-transform: translateX(-100%); }
+}

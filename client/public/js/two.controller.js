@@ -1,19 +1,20 @@
 angular.module("app")
-.controller("mainCtrl", function($scope, Main, Api){
+.controller("twoCtrl", function($scope, Main, Api){
   // $scope variables
   $scope.principal = Main.principal;
   $scope.percentVti = Main.percentVti;
   $scope.percentVxus = Main.percentVxus;
   $scope.percentBnd = Main.percentBnd;
-  $scope.funds;
-  Api.success(function(respsonse){
-    $scope.funds = respsonse.data;
-  })
+  $scope.cashVti = Main.cashVti;
+  $scope.cashVxus = Main.cashVxus;
+  $scope.cashBnd = Main.cashBnd;
+  $scope.Math = Math;
+  $scope.pageClass = 'page-two';
 
 
   // $scope functions
   $scope.setPercents = Main.setPercents;
-  $scope.setPrincipal = Main.setPrincipal;
+  $scope.setCash = Main.setCash;
 
   // function for making sure allotments cannot total greater than 100%
   $scope.checkPercentTotalAndRebalance = function(safe) {

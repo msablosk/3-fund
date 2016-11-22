@@ -23,22 +23,23 @@ function getQuote(url) {
     });
 }
 
-app.get('/api', function (req, res) {
-		
-	var vti, vxus, bnd;
-	
-	getQuote(urlVTI).then(function(response){
-    	vti = response.dataset.data[0][4];
-    	getQuote(urlVXUS).then(function(response){
-    		vxus = response.dataset.data[0][4];
-    		getQuote(urlBND).then(function(response){
-    			bnd = response.dataset.data[0][4];
-    			res.json({"vti": vti, "vxus": vxus, "bnd": bnd})
-    		})
-    	})
-	}, function(response){
-        console.log(response.data);
+var vti, vxus, bnd;
+    
+getQuote(urlVTI).then(function(response){
+    vti = response.dataset.data[0][4];
+    getQuote(urlVXUS).then(function(response){
+        vxus = response.dataset.data[0][4];
+        getQuote(urlBND).then(function(response){
+            bnd = response.dataset.data[0][4];
+            
+        })
     })
+}, function(response){
+    console.log(response.data);
+})
+
+app.get('/api', function (req, res) {	
+	res.json({"vti": vti, "vxus": vxus, "bnd": bnd})
 })
 
 app.get('/', function(req, res){ 
