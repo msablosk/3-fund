@@ -1,6 +1,7 @@
 var express = require('express');
 var fetch = require('node-fetch');
 var key = require('./key');
+var schedule = require('node-schedule');
 var app = express();
 
 app.use(express.static(__dirname + '/client'));
@@ -25,17 +26,18 @@ function getQuote(url) {
 
 var vti, vxus, bnd;
     
-getQuote(urlVTI).then(function(response){
-    vti = response.dataset.data[0][4];
-    getQuote(urlVXUS).then(function(response){
-        vxus = response.dataset.data[0][4];
-        getQuote(urlBND).then(function(response){
-            bnd = response.dataset.data[0][4];
-            
+var getQuotesDaily = schedule.scheduleJob('0 5 23 * * 1-5', function(){    
+    getQuote(urlVTI).then(function(response){
+        vti = response.dataset.data[0][4];
+        getQuote(urlVXUS).then(function(response){
+            vxus = response.dataset.data[0][4];
+            getQuote(urlBND).then(function(response){
+                bnd = response.dataset.data[0][4];
+            })
         })
+    }, function(response){
+        console.log(response.data);
     })
-}, function(response){
-    console.log(response.data);
 })
 
 app.get('/api', function (req, res) {	
