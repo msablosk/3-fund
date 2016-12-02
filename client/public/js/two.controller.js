@@ -10,7 +10,11 @@ angular.module("app")
   $scope.cashBnd = Main.cashBnd;
   $scope.Math = Math;
   $scope.pageClass = 'page-two';
-
+  $scope.pageDirection = Main.pageDirection;
+  $scope.setPageDirection = function(direction){
+      Main.setPageDirection(direction);
+      $scope.pageDirection = direction;
+  }
 
   // $scope functions
   $scope.setPercents = Main.setPercents;

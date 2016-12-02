@@ -15,8 +15,8 @@
 			<input type="range" ng-change="checkPercentTotalAndRebalance(percentBnd)" max="100" step="1" ng-model="percentBnd">
 			<p class="flow-text">{{percentBnd}}% - ${{principal * (percentBnd/100)}}</p>
 		</form>
-		<a href="#/"><button class="waves-effect waves-light btn">Back</button></a>
-		<a href="#/three" ng-click="setPercents(percentVti, percentVxus, percentBnd); setCash(percentVti, percentVxus, percentBnd, principal)"><button class="waves-effect waves-light btn">NEXT</button></a>
+		<a href="#/" ng-click="setPageDirection(false)"><button class="waves-effect waves-light btn">Back</button></a>
+		<a href="#/three" ng-click="setPercents(percentVti, percentVxus, percentBnd); setCash(percentVti, percentVxus, percentBnd, principal); setPageDirection(true)"><button class="waves-effect waves-light btn">NEXT</button></a>
 		
 	</div>
 	</div>

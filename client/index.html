@@ -7,7 +7,7 @@
 </head>
 <body ng-app="app">
 	
-	<div class="page {{pageClass}}" ng-view></div>
+	<div class="page {{pageClass}}"  ng-class="{forward: pageDirection, backward: !pageDirection}" ng-view></div>
 	
 
 	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>

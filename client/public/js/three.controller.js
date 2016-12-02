@@ -11,6 +11,11 @@ angular.module("app")
   $scope.cashBnd = Main.cashBnd;
   $scope.Math = Math;
   $scope.pageClass = 'page-three';
+  $scope.pageDirection = Main.pageDirection;
+  $scope.setPageDirection = function(direction){
+      Main.setPageDirection(direction);
+      $scope.pageDirection = direction;
+  }
 
   $scope.funds;
   Api.getFunds().then(function(response){

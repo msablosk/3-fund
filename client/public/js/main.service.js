@@ -9,6 +9,7 @@ factory("Main", function () {
       cashVti: 0,
       cashVxus: 0,
       cashBnd: 0,
+      pageDirection: true
 	}
 
 	Main.setPercents = function(vti, vxus, bnd){
@@ -31,15 +32,10 @@ factory("Main", function () {
     Main.commission = commission;
   }
 
-	
-  			
+  Main.setPageDirection = function(direction){
+    Main.pageDirection = direction;
+  }
+
 	return Main;	
-  	
 	
 })
-
-/*
-
-
-  			
-*/
