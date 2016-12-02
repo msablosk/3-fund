@@ -14,6 +14,10 @@ html {
   width:100%; 
 }
 
+h1.logo{
+  background: #26a69a;
+}
+
 /******
 STEP 1
 ******/
@@ -75,17 +79,8 @@ h1.logo {
   animation:slideInLeft 0.5s both ease-in;    
 }
 
-.page-one h1.logo{
-  background: #26a69a;
-}
 
-.page-two h1.logo{
-  background: #B5E2FA;
-}
 
-.page-three h1.logo{
-  background: #EDDEA4;
-}
 
 /* slide in from the right */
 @keyframes slideInRight {
